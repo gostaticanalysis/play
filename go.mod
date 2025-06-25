@@ -1,6 +1,8 @@
 module github.com/gostaticanalysis/play
 
-go 1.24.4
+go 1.23.0
+
+toolchain go1.24.3
 
 require (
 	go.uber.org/multierr v1.8.0
