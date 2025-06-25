@@ -2,8 +2,10 @@ package main
 
 import (
 	"archive/zip"
+	"errors"
 	"flag"
 	"fmt"
+	"go/version"
 	"io"
 	"os"
 	"runtime"
@@ -17,7 +19,7 @@ import (
 var (
 	flagGOOS   string
 	flagGOARCH string
-	flagPkgs string
+	flagPkgs   string
 )
 
 func init() {
@@ -58,7 +60,7 @@ func run(args []string) (rerr error) {
 		return err
 	}
 
-	version := strings.ReplaceAll(runtime.Version(), ".", "")
+	version := strings.ReplaceAll(version.Lang(runtime.Version()), ".", "")
 	fname := strings.Join(patterns, "-") + "_" + version + "_" + flagGOOS + "_" + flagGOARCH + ".zip"
 	dst, err := os.Create(fname)
 	if err != nil {
