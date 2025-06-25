@@ -12,6 +12,9 @@ import (
 
 //go:generate go run github.com/gostaticanalysis/play/cmd/exportdata
 
+//go:embed go124_linux_amd64.zip
+var exportFilesZIP []byte
+
 var exportFiles *zip.Reader
 
 func init() {
